@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        table,
+        td {
+            border-left: 1px solid gray;
+            border-right: 1px solid gray;
+            border-collapse: collapse;
+            margin: auto;
+            padding: 5px;
+        }
+
+        table {
+            border-bottom: 1px solid gray;
+            border-top: 1px solid gray;
+            color: darkgreen;
+            background-color: azure;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="HW01.html">HW01</a></li>
+            <li><a href="HW02.html">HW02</a></li>
+            <li><a href="HW03.html">HW03</a></li>
+            <li><a href="HW04.html">HW04</a></li>
+            <li><a href="HW05.html">HW05</a></li>
+        </ul>
+    </nav>
+    <br>
+    <script>
+        document.write("<table>");
+        for (var i = 1; i < 10; i++) {
+            document.write("<tr>")
+            for (var j = 2; j < 10; j++) {
+                // document.write(`<tr><td>(${i}*${j} = ${i * j})</td></tr>`)
+                document.write(`<td>${j}*${i} = ${i * j}</td>`);
+            }
+            document.write("</tr>")
+        }
+        document.write("</table>");
+    </script>
+</body>
+
+
+
+</html>

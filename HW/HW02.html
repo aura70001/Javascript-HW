@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>05checkPassword.html</title>
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        fieldset {
+            width: 700px;
+            margin: auto;
+            border: 2px solid red;
+            border-radius: 10px;
+        }
+
+        legend {
+            font-size: 1.5em;
+            font-weight: 700;
+
+        }
+
+        img.eye {
+            width: 22px;
+            vertical-align: middle;
+            margin-left: -27px;
+            /* position: absolute; */
+        }
+
+        img.accept {
+            width: 22px;
+            vertical-align: middle;
+            /* margin-left: -23px; */
+            /* position: absolute; */
+        }
+
+        div.content {
+            position: relative;
+            /* background-color: aqua; */
+            margin: 30px 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dotted gray;
+        }
+
+        label {
+            font-weight: 800;
+            line-height: 20px;
+            width: 100px;
+            /* float: left; */
+            /* text-align: right; */
+            padding-right: 5px;
+        }
+
+        P {
+            margin: 0%;
+            color: gray;
+            font-size: 0.9em;
+        }
+
+
+
+        /* span {
+            height: 20px;
+            box-sizing: border-box;
+        } */
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="HW01.html">HW01</a></li>
+            <li><a href="HW02.html">HW02</a></li>
+            <li><a href="HW03.html">HW03</a></li>
+            <li><a href="HW04.html">HW04</a></li>
+            <li><a href="HW05.html">HW05</a></li>
+        </ul>
+    </nav>
+    <br>
+
+    <fieldset>
+        <legend>Form Check</legend>
+        <div class="content">
+            <label>姓名：</label>
+
+            <input type="text" id="names" size="12">
+
+            <span id="namesp"></span><br />
+            <p>(1.不可空白 2.至少2個字以上 3.必須全部為中文字)</p>
+        </div>
+
+        <div class="content">
+            <label>密碼：</label>
+
+            <input type="password" id="idPwd" size="12" />
+            <img class="eye" src="Images/eye.png" id="eyes">
+            <span id="idsp"></span><br />
+            <p>(1.不可空白 2.至少6個字且必須包含英數字、特殊字元[!@#$%^&*])</p>
+        </div>
+
+        <div class="content">
+            <label>日期：</label>
+
+            <input type="text" id="dates" size="12" />
+
+            <span id="datesp"></span><br />
+            <p>(格式：西元年/月/日(yyyy/mm/dd))</p>
+        </div>
+        <!-- <div style="text-align: center;">
+            <input type="button" id="idbut" value="checkPassword" onclick="checkPwd();" />
+        </div> -->
+    </fieldset>
+
+
+
+    <script>
+
+        let nameObj = document.getElementById("names");
+        nameObj.addEventListener("blur", checkName);
+
+        let thePwdObj = document.getElementById("idPwd");
+        thePwdObj.addEventListener("blur", checkPwd);
+
+
+        let eyesCheck = document.getElementById("eyes");
+        eyesCheck.addEventListener("mousedown", view);
+        eyesCheck.addEventListener("mouseup", hide);
+
+        let dateObj = document.getElementById("dates");
+        dateObj.addEventListener("blur", checkDate);
+
+        function checkName() {
+            let nameObj = document.getElementById("names");
+            let nameObjVal = nameObj.value;
+            let nameObjLen = nameObjVal.length;
+            let sp = document.getElementById("namesp");
+
+            if (nameObjVal == "")
+                sp.innerHTML = "<img class='accept' src='Images/remove.png'> you must enter";
+            else if (nameObjLen >= 2) {
+                for (let i = 0; i < nameObjLen; i++) {
+                    if (nameObjVal.charCodeAt(i) < 0x4e00 || nameObjVal.charCodeAt(i) > 0x9FA5) {
+                        sp.innerHTML = "<img class='accept' src='Images/remove.png'> name  must belong to Chinese";
+                        return;
+                    }
+
+                }
+                sp.innerHTML = "<img class='accept' src='Images/accept.png'> correct";
+            } else {
+                sp.innerHTML = "<img class='accept' src='Images/remove.png'> name length must be greater than 2";
+            }
+        }
+
+        function checkPwd() {
+            //取得idPwd元素
+            let thePwdObj = document.getElementById("idPwd");
+
+            //取得idPwd元素值
+            let thePwdObjVal = thePwdObj.value;
+
+            let sp = document.getElementById("idsp");
+            let thePwdObjValLen = thePwdObjVal.length;
+            let flag1 = false, flag2 = false, flag3 = false;
+
+            //判斷元素值是否為空白，密碼長度是否大於6
+            //如果長度是否大於6，判斷是否包含字母、數字、特殊符號
+            if (thePwdObjVal == "")
+                sp.innerHTML = "<img class='accept' src='Images/remove.png'> you must enter";
+            else if (thePwdObjValLen >= 6) {
+                for (let i = 0; i < thePwdObjValLen; i++) {
+                    let ch = thePwdObjVal.charAt(i).toUpperCase();
+                    if (ch >= "A" && ch <= "Z")
+                        flag1 = true;
+                    else if (ch >= "0" && ch <= "9")
+                        flag2 = true;
+
+                    if (flag1 && flag2) break;
+                }
+                if (thePwdObjVal.match(/[!@#$%^&*]/g)) {
+                    flag3 = true;
+                }
+                if (flag1 && flag2 && flag3)
+                    sp.innerHTML = "<img class='accept' src='Images/accept.png'> correct";
+                else
+                    sp.innerHTML = "<img class='accept' src='Images/remove.png'> incorrect";
+            } else {
+                sp.innerHTML = "<img class='accept' src='Images/remove.png'> Password length must be greater than 6";
+            }
+        }
+
+        function view() {
+            thePwdObj.type = "text"
+        }
+
+        function hide() {
+            thePwdObj.type = "password"
+        }
+
+        function checkDate() {
+            let dateObj = document.getElementById("dates");
+            let dateVal = dateObj.value;
+            let dateSplit = dateVal.split('/');
+
+            let dateYear = dateSplit[0];
+            let dateMonth = dateSplit[1];
+            let dateDate = dateSplit[2];
+
+            let parseYear = new Date(dateVal).getFullYear();
+            let parseMonth = new Date(dateVal).getMonth() + 1;
+            let parseDate = new Date(dateVal).getDate();
+
+            let sp = document.getElementById("datesp")
+
+            if (dateYear == parseYear && dateMonth == parseMonth && dateDate == parseDate) {
+                sp.innerHTML = "<img class='accept' src='Images/accept.png'> correct";
+            } else {
+                sp.innerHTML = "<img class='accept' src='Images/remove.png'> Incorrect";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
