@@ -85,7 +85,7 @@
     </div>
 
     <script>
-        // 圖片輪播功能
+        // 1.圖片輪播功能
 
         let timeInterval = setInterval(weaponChange, 600);
 
@@ -108,7 +108,7 @@
             currentButton.style.backgroundColor = "orange"; // 最後更改樣是
         }
 
-        // 編號按鈕
+        // 2.編號按鈕
         for (let i = 1; i <= 14; i++) {
             let buttons = document.getElementById(`b` + i); // 抓物件
             buttons.addEventListener("click", () => { weaponClick(i) }); // 指派，並把按鈕本身索引丟給下面方法執行
@@ -125,7 +125,7 @@
 
         }
 
-        // controll按鈕 (上、下一張)
+        // 3.controll按鈕 (上、下一張)
         let lastButton = document.getElementById("last");
         let nextButton = document.getElementById("next");
         lastButton.addEventListener("click", lastClick)
@@ -163,7 +163,7 @@
             currentButton.style.backgroundColor = "orange";
         }
 
-        // 播放、暫停
+        // 4.播放、暫停
         let playbutton = document.getElementById("play");
         playbutton.addEventListener("click", trans);
         flag = true;
