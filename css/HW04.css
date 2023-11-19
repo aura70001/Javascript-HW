@@ -1,0 +1,33 @@
+.main {
+    border: 2px dotted mediumaquamarine;
+    border-radius: 15px;
+    width: 800px;
+    height: 500px;
+    margin: auto;
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+div {
+    margin: 30px;
+}
+
+img {
+    width: 25%;
+    margin: 50px 0px;
+    border: 6px dotted gold;
+    border-radius: 15px;
+}
+
+.number {
+    width: 30px;
+    /* border: 0.5px solid brown; */
+    background-color: aliceblue;
+    margin: 2px;
+}
+
+.controll {
+    font-size: large;
+    width: 50px;
+    margin: 0px 50px;
+}

@@ -1,0 +1,25 @@
+.d1 {
+    width: 900px;
+    margin: auto;
+    background-color: cadetblue;
+    border: 2px dotted darkblue;
+    border-radius: 10px;
+    text-align: center;
+}
+
+img {
+    margin: 15px;
+}
+
+p {
+    margin: 10px;
+    font-size: 2em;
+    color: navajowhite
+}
+
+.score {
+    font-family: 微軟正黑體;
+    color: lavenderblush;
+    font-size: 2em;
+    margin: 20px;
+}

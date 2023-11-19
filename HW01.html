@@ -5,24 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="nav.css">
-    <style>
-        table,
-        td {
-            border-left: 1px solid gray;
-            border-right: 1px solid gray;
-            border-collapse: collapse;
-            margin: auto;
-            padding: 5px;
-        }
-
-        table {
-            border-bottom: 1px solid gray;
-            border-top: 1px solid gray;
-            color: darkgreen;
-            background-color: azure;
-        }
-    </style>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/HW01.css">
 </head>
 
 <body>
@@ -36,20 +20,7 @@
         </ul>
     </nav>
     <br>
-    <script>
-        document.write("<table>");
-        for (var i = 1; i < 10; i++) {
-            document.write("<tr>")
-            for (var j = 2; j < 10; j++) {
-                // document.write(`<tr><td>(${i}*${j} = ${i * j})</td></tr>`)
-                document.write(`<td>${j}*${i} = ${i * j}</td>`);
-            }
-            document.write("</tr>")
-        }
-        document.write("</table>");
-    </script>
+    <script src="script/HW01.js"></script>
 </body>
-
-
 
 </html>
