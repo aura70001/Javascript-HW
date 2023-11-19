@@ -56,8 +56,8 @@
     <br>
     <div class="main">
 
-        <img id="weapons" src="weapon/1.png">
-
+        <a id="links" href="https://kuroyonhon.com/mhrisesb/memo/2.php"><img id="weapons" src="weapon/1.png"></a>
+        <!--網址從2開始，後續改超連結要另外加1-->
         <br>
         <div>
             <input class="number" style="background-color: orange;" type="button" id="b1" value="1"> <!--起始-->
@@ -75,13 +75,11 @@
             <input class="number" type="button" id="b13" value="13">
             <input class="number" type="button" id="b14" value="14">
         </div>
-
         <div>
             <input class="controll" type="button" id="last" value="⏮️"> <!--上一張-->
             <input class="controll" type="button" id="play" value="⏸️"> <!--暫停or播放-->
             <input class="controll" type="button" id="next" value="⏭️"> <!--下一張-->
         </div>
-
     </div>
 
     <script>
@@ -90,6 +88,7 @@
         let timeInterval = setInterval(weaponChange, 600);
 
         let weapon = document.getElementById("weapons");
+
         function weaponChange() {
             let num = parseInt(weapon.src.match(/(\d+)\.png$/)[1]); // 取得原本圖片的檔名，並找到索引
 
@@ -99,13 +98,16 @@
             weapon.src = (num != 14) ? "weapon/" + (num + 1) + ".png" : "weapon/" + 1 + ".png" // 替換下一張圖
 
             let currentButton; // 用索引抓替換後的按鈕
+            let imgLink = document.getElementById("links"); // 改超連結
 
             if (num != 14) { // 需判斷是不是最後一張，是的話要回第一張
                 currentButton = document.getElementById(`b` + (num + 1));
+                imgLink.href = "https://kuroyonhon.com/mhrisesb/memo/" + (num + 2) + ".php"; // 網址關係，另外加1
             } else {
                 currentButton = document.getElementById("b1");
+                imgLink.href = "https://kuroyonhon.com/mhrisesb/memo/" + 2 + ".php";
             }
-            currentButton.style.backgroundColor = "orange"; // 最後更改樣是
+            currentButton.style.backgroundColor = "orange"; // 最後更改樣式
         }
 
         // 2.編號按鈕
@@ -123,6 +125,9 @@
             let currentButton = document.getElementById(`b` + index); // 抓替換後按鈕，更改樣式
             currentButton.style.backgroundColor = "orange";
 
+            let imgLink = document.getElementById("links"); // 更改超連結
+            imgLink.href = "https://kuroyonhon.com/mhrisesb/memo/" + (index + 1) + ".php";
+
         }
 
         // 3.controll按鈕 (上、下一張)
@@ -139,10 +144,14 @@
             weapon.src = (num != 1) ? "weapon/" + (num - 1) + ".png" : "weapon/" + 14 + ".png" // 替換圖片
 
             let currentButton;// 抓替換後按鈕，更改樣式。
+            let imgLink = document.getElementById("links"); // 更改超連結
+
             if (num != 1) {
                 currentButton = document.getElementById(`b` + (num - 1));
+                imgLink.href = "https://kuroyonhon.com/mhrisesb/memo/" + (num) + ".php";
             } else {
                 currentButton = document.getElementById("b14");
+                imgLink.href = "https://kuroyonhon.com/mhrisesb/memo/" + (15) + ".php";
             }
             currentButton.style.backgroundColor = "orange";
 
@@ -155,10 +164,14 @@
             weapon.src = (num != 14) ? "weapon/" + (num + 1) + ".png" : "weapon/" + 1 + ".png" // 替換圖片
 
             let currentButton;// 抓替換後按鈕，更改樣式。
+            let imgLink = document.getElementById("links"); // 更改超連結
+
             if (num != 14) {
                 currentButton = document.getElementById(`b` + (num + 1));
+                imgLink.href = "https://kuroyonhon.com/mhrisesb/memo/" + (num + 2) + ".php";
             } else {
                 currentButton = document.getElementById("b1");
+                imgLink.href = "https://kuroyonhon.com/mhrisesb/memo/" + (2) + ".php";
             }
             currentButton.style.backgroundColor = "orange";
         }
@@ -179,7 +192,6 @@
             }
         }
     </script>
-
 </body>
 
 </html>

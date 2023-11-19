@@ -1,20 +1,14 @@
 a:link {
     text-decoration: none;
-    /* color: aliceblue; */
 }
 
 a:visited {
     text-decoration: none;
-
 }
 
 a:hover {
-    /* color: gray; */
     background-color: bisque;
 }
-
-
-
 
 nav {
     width: 550px;
@@ -22,15 +16,12 @@ nav {
     margin: auto;
     display: block;
     text-align: center;
-
 }
-
 
 ul {
     list-style-type: none;
     display: inline-block;
     margin: auto;
-    /* border: 2px solid orangered; */
 
 }
 
@@ -41,6 +32,5 @@ li {
     margin: 0px 10px;
     vertical-align: middle;
     font-size: 1.5em;
-    /* border: 2px solid orangered; */
 
 }
