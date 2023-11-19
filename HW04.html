@@ -5,6 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .main {
+            border: 2px dotted mediumaquamarine;
+            border-radius: 15px;
+            width: 800px;
+            height: 500px;
+            margin: auto;
+            text-align: center;
+            background-color: antiquewhite;
+        }
+
+        div {
+            margin: 30px;
+        }
+
+        img {
+            width: 25%;
+            margin: 50px 0px;
+            border: 6px dotted gold;
+            border-radius: 15px;
+        }
+
+        .number {
+            width: 30px;
+            /* border: 0.5px solid brown; */
+            background-color: aliceblue;
+            margin: 2px;
+        }
+
+        .controll {
+            font-size: large;
+            width: 50px;
+            margin: 0px 50px;
+        }
+    </style>
     <link rel="stylesheet" href="nav.css">
 </head>
 
@@ -19,7 +54,131 @@
         </ul>
     </nav>
     <br>
+    <div class="main">
 
+        <img id="weapons" src="weapon/1.png">
+
+        <br>
+        <div>
+            <input class="number" style="background-color: orange;" type="button" id="b1" value="1"> <!--起始-->
+            <input class="number" type="button" id="b2" value="2">
+            <input class="number" type="button" id="b3" value="3">
+            <input class="number" type="button" id="b4" value="4">
+            <input class="number" type="button" id="b5" value="5">
+            <input class="number" type="button" id="b6" value="6">
+            <input class="number" type="button" id="b7" value="7">
+            <input class="number" type="button" id="b8" value="8">
+            <input class="number" type="button" id="b9" value="9">
+            <input class="number" type="button" id="b10" value="10">
+            <input class="number" type="button" id="b11" value="11">
+            <input class="number" type="button" id="b12" value="12">
+            <input class="number" type="button" id="b13" value="13">
+            <input class="number" type="button" id="b14" value="14">
+        </div>
+
+        <div>
+            <input class="controll" type="button" id="last" value="⏮️"> <!--上一張-->
+            <input class="controll" type="button" id="play" value="⏸️"> <!--暫停or播放-->
+            <input class="controll" type="button" id="next" value="⏭️"> <!--下一張-->
+        </div>
+
+    </div>
+
+    <script>
+        // 圖片輪播功能
+
+        let timeInterval = setInterval(weaponChange, 600);
+
+        let weapon = document.getElementById("weapons");
+        function weaponChange() {
+            let num = parseInt(weapon.src.match(/(\d+)\.png$/)[1]); // 取得原本圖片的檔名，並找到索引
+
+            let previousButton = document.getElementById(`b` + num); // 用索引抓當下按鈕，使其顏色回復成原本樣式
+            previousButton.style.backgroundColor = "aliceblue";
+
+            weapon.src = (num != 14) ? "weapon/" + (num + 1) + ".png" : "weapon/" + 1 + ".png" // 替換下一張圖
+
+            let currentButton; // 用索引抓替換後的按鈕
+
+            if (num != 14) { // 需判斷是不是最後一張，是的話要回第一張
+                currentButton = document.getElementById(`b` + (num + 1));
+            } else {
+                currentButton = document.getElementById("b1");
+            }
+            currentButton.style.backgroundColor = "orange"; // 最後更改樣是
+        }
+
+        // 編號按鈕
+        for (let i = 1; i <= 14; i++) {
+            let buttons = document.getElementById(`b` + i); // 抓物件
+            buttons.addEventListener("click", () => { weaponClick(i) }); // 指派，並把按鈕本身索引丟給下面方法執行
+        }
+
+        function weaponClick(index) {
+            let num = parseInt(weapon.src.match(/(\d+)\.png/)[1]);
+            let previousButton = document.getElementById(`b` + num); // 抓原本按鈕，回復樣式
+            previousButton.style.backgroundColor = "aliceblue";
+
+            weapon.src = "weapon/" + index + ".png"
+            let currentButton = document.getElementById(`b` + index); // 抓替換後按鈕，更改樣式
+            currentButton.style.backgroundColor = "orange";
+
+        }
+
+        // controll按鈕 (上、下一張)
+        let lastButton = document.getElementById("last");
+        let nextButton = document.getElementById("next");
+        lastButton.addEventListener("click", lastClick)
+        nextButton.addEventListener("click", nextClick)
+
+        function lastClick() {
+            let num = parseInt(weapon.src.match(/(\d+)\.png$/)[1]);
+            let previousButton = document.getElementById(`b` + num); // 抓到原本按鈕，回復樣式
+            previousButton.style.backgroundColor = "aliceblue";
+
+            weapon.src = (num != 1) ? "weapon/" + (num - 1) + ".png" : "weapon/" + 14 + ".png" // 替換圖片
+
+            let currentButton;// 抓替換後按鈕，更改樣式。
+            if (num != 1) {
+                currentButton = document.getElementById(`b` + (num - 1));
+            } else {
+                currentButton = document.getElementById("b14");
+            }
+            currentButton.style.backgroundColor = "orange";
+
+        }
+        function nextClick() {
+            let num = parseInt(weapon.src.match(/(\d+)\.png$/)[1]);
+            let previousButton = document.getElementById(`b` + num); // 抓到原本按鈕，回復樣式
+            previousButton.style.backgroundColor = "aliceblue";
+
+            weapon.src = (num != 14) ? "weapon/" + (num + 1) + ".png" : "weapon/" + 1 + ".png" // 替換圖片
+
+            let currentButton;// 抓替換後按鈕，更改樣式。
+            if (num != 14) {
+                currentButton = document.getElementById(`b` + (num + 1));
+            } else {
+                currentButton = document.getElementById("b1");
+            }
+            currentButton.style.backgroundColor = "orange";
+        }
+
+        // 播放、暫停
+        let playbutton = document.getElementById("play");
+        playbutton.addEventListener("click", trans);
+        flag = true;
+        function trans() {
+            if (flag == true) {
+                clearInterval(timeInterval);
+                playbutton.value = "▶️";
+                flag = false;
+            } else {
+                timeInterval = setInterval(weaponChange, 600); // 重新建一個計時區間，不能用let，以免下次關不掉這個區域變數。
+                playbutton.value = "⏸️";
+                flag = true;
+            }
+        }
+    </script>
 
 </body>
 
