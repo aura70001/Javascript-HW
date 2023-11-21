@@ -3,8 +3,7 @@
 let timeInterval = setInterval(weaponChange, 600);
 
 let weapon = document.getElementById("weapons");
-let lastweapon = document.getElementById("lastweapon");
-let nextweapon = document.getElementById("nextweapon");
+
 
 
 function weaponChange() {
@@ -14,13 +13,21 @@ function weaponChange() {
     previousButton.style.backgroundColor = "aliceblue";
 
     weapon.src = (num != 14) ? "weapon/" + (num + 1) + ".png" : "weapon/" + 1 + ".png" // 替換下一張圖
-    lastweapon.src = (num != 1) ? "weapon/" + (num) + ".png" : "weapon/" + 14 + ".png"
-    nextweapon.src = (num < 13) ? "weapon/" + (num + 2) + ".png" : "weapon/" + 1 + ".png"
+
+    // 改另外兩張圖
+    if (num == 13) {
+        nextweapon.src = "weapon/" + 1 + ".png";
+    } else if (num == 14) {
+        nextweapon.src = "weapon/" + 2 + ".png";
+    } else {
+        nextweapon.src = "weapon/" + (num + 2) + ".png";
+    }
+
+    lastweapon.src = (num != 1) ? "weapon/" + (num) + ".png" : "weapon/" + 1 + ".png"
+
 
     let currentButton; // 用索引抓替換後的按鈕
     let imgLink = document.getElementById("links"); // 改超連結
-    let lastImgLink = document.getElementById("lastlink");
-    let nextImgLink = document.getElementById("nextlink");
 
     if (num != 14) { // 需判斷是不是最後一張，是的話要回第一張
         currentButton = document.getElementById(`b` + (num + 1));
@@ -50,6 +57,8 @@ function weaponClick(index) {
     let imgLink = document.getElementById("links"); // 更改超連結
     imgLink.href = "https://kuroyonhon.com/mhrisesb/memo/" + (index + 1) + ".php";
 
+    nextweapon.src = (index != 14) ? "weapon/" + (index + 1) + ".png" : "weapon/" + 1 + ".png" // 更改兩張圖
+    lastweapon.src = (index != 1) ? "weapon/" + (index - 1) + ".png" : "weapon/" + 14 + ".png"
 }
 
 // 3.controll按鈕 (上、下一張)
@@ -77,6 +86,13 @@ function lastClick() {
     }
     currentButton.style.backgroundColor = "orange";
 
+    nextweapon.src = "weapon/" + (num) + ".png"; // 更改兩張圖
+    if (num == 2) {
+        lastweapon.src = "weapon/14.png";
+    } else if (num == 1) {
+        lastweapon.src = "weapon/13.png";
+    } else
+        lastweapon.src = "weapon/" + (num - 2) + ".png";
 }
 function nextClick() {
     let num = parseInt(weapon.src.match(/(\d+)\.png$/)[1]);
@@ -96,6 +112,16 @@ function nextClick() {
         imgLink.href = "https://kuroyonhon.com/mhrisesb/memo/" + (2) + ".php";
     }
     currentButton.style.backgroundColor = "orange";
+
+
+    if (num == 13) { // 更改兩張圖
+        nextweapon.src = "weapon/1.png";
+    } else if (num == 14) {
+        nextweapon.src = "weapon/2.png";
+    } else
+        nextweapon.src = "weapon/" + (num + 2) + ".png";
+
+    lastweapon.src = "weapon/" + (num) + ".png";
 }
 
 // 4.播放、暫停
