@@ -3,6 +3,9 @@
 let timeInterval = setInterval(weaponChange, 600);
 
 let weapon = document.getElementById("weapons");
+let lastweapon = document.getElementById("lastweapon");
+let nextweapon = document.getElementById("nextweapon");
+
 
 function weaponChange() {
     let num = parseInt(weapon.src.match(/(\d+)\.png$/)[1]); // 取得原本圖片的檔名，並找到索引
@@ -11,9 +14,13 @@ function weaponChange() {
     previousButton.style.backgroundColor = "aliceblue";
 
     weapon.src = (num != 14) ? "weapon/" + (num + 1) + ".png" : "weapon/" + 1 + ".png" // 替換下一張圖
+    lastweapon.src = (num != 1) ? "weapon/" + (num) + ".png" : "weapon/" + 14 + ".png"
+    nextweapon.src = (num < 13) ? "weapon/" + (num + 2) + ".png" : "weapon/" + 1 + ".png"
 
     let currentButton; // 用索引抓替換後的按鈕
     let imgLink = document.getElementById("links"); // 改超連結
+    let lastImgLink = document.getElementById("lastlink");
+    let nextImgLink = document.getElementById("nextlink");
 
     if (num != 14) { // 需判斷是不是最後一張，是的話要回第一張
         currentButton = document.getElementById(`b` + (num + 1));

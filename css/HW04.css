@@ -19,6 +19,12 @@ img {
     border-radius: 15px;
 }
 
+.small {
+    width: 10%;
+    margin: 100px 90px;
+
+}
+
 .number {
     width: 30px;
     /* border: 0.5px solid brown; */
