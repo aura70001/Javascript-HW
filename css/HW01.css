@@ -4,6 +4,7 @@ td {
     border-right: 1px solid gray;
     border-collapse: collapse;
     margin: auto;
+    margin-top: 40px;
     padding: 5px;
 }
 

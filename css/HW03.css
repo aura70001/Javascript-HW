@@ -1,6 +1,7 @@
 .d1 {
     width: 900px;
     margin: auto;
+    margin-top: 40px;
     background-color: cadetblue;
     border: 2px dotted darkblue;
     border-radius: 10px;

@@ -20,12 +20,40 @@
         </ul>
     </nav>
     <br>
-    <div>
-        <select id="yearList"></select>
+    <div class="main">
+        <div>
+            <h2>Welcome</h2>
+        </div>
+        <div>
+            <select id="yearList" value=""></select><span>年</span>
 
-        <select id="monthList"></select>
+            <select id="monthList" value=""></select><span>月</span>
+
+            <select id="dateList" value=""></select><span>日</span>
+        </div>
+
+        <div class="calendar">
+            <table>
+                <thead>
+                    <tr>
+                        <th>日</th>
+                        <th>一</th>
+                        <th>二</th>
+                        <th>三</th>
+                        <th>四</th>
+                        <th>五</th>
+                        <th>六</th>
+                    </tr>
+                </thead>
+                <tbody id="fillDate">
+
+
+                </tbody>
+
+            </table>
+        </div>
+        <script src="script/HW05.js"></script>
     </div>
-    <script src="script/HW05.js"></script>
 </body>
 
 </html>

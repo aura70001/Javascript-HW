@@ -1,6 +1,7 @@
 fieldset {
     width: 700px;
     margin: auto;
+    margin-top: 40px;
     border: 2px solid red;
     border-radius: 10px;
 }

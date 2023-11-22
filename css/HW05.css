@@ -1,10 +1,63 @@
-div {
-    margin: auto;
-    width: 500px;
-    border: 1px solid grey;
-    text-align: center;
+h2 {
+    color: aliceblue;
 }
 
+span {
+    color: aliceblue;
+    /* font-family: ; */
+}
+
+.main {
+    height: 500px;
+    width: 700px;
+    border: 2px solid black;
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    margin-top: 40px;
+    background-color: darkslategrey;
+}
+
+div {
+    /* margin: 20px;
+    width: 500px;
+    border: 1px solid grey;
+    text-align: center; */
+
+}
+
+
 select {
-    margin: 0px 50px;
+    margin: 0px 10px;
+}
+
+.calendar {
+    width: 75%;
+    height: 65%;
+    border: 2px dotted darkblue;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+table {
+    width: 90%;
+    height: 90%;
+    text-align: center;
+    margin: auto;
+}
+
+thead {
+    font-size: 2em;
+    color: antiquewhite;
+}
+
+tbody {
+    font-size: 1.7em;
+    color: thistle;
+    /* border: 2px solid aliceblue; */
+}
+
+tr {
+    margin: 10px
 }
