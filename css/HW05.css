@@ -4,3 +4,7 @@ div {
     border: 1px solid grey;
     text-align: center;
 }
+
+select {
+    margin: 0px 50px;
+}
