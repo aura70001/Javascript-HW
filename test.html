@@ -5,46 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 
 <body>
-    <script>
-        let d = new Date();
-        let e = new Date("2023-01-11T11:11:11");
-        // let e = new Date("2023-01-11T11:11:11");
-        console.log(d);
-        console.log(e);
-        person = { lastName: "May", firstName: "li" };
-        console.log(person)
-        for (let obj in person) {
-            console.log(person[obj])
-            console.log(obj)
-
-        }
-
-        let myfruits = [["apple", "banana", "grape"], ["pork", "beef"]]
-
-        for (let myfruit of myfruits) {
-            console.log(myfruit)
-            for (let fruit of myfruit)
-                console.log(fruit)
-        }
-
-        let num = [0, 1, 2, 3, 4, 5];
-        // let nums = num.reverse();
-        // console.log(nums);
-        // console.log(num);
-        // console.log(num.slice(2, 3));
-        console.log(num.splice(2, 3, 2, 3, 44));
-        console.log(num);
+    <p><span>jdoijsdlfkjsdlfj</span></p>
 
 
-        // console.log(person.firstName);
-
-
-
-    </script>
 </body>
-</body>
+<script>
+    // console.log(document.firstElementNodes[0]);
+    let body = document.documentElement.lastElementChild;
+    // console.log(body.firstElementNodes[0]);
+    // console.log(body.childNodes[0]);
+    console.log(body.childNodes[1]);
+    console.log(body.childNodes[1].firstChild);
+    // console.log(body.children[0]);
+    // console.log(body.firstElementChild);
+
+    // console.log(body);
+
+
+
+</script>
+
+
 
 </html>
