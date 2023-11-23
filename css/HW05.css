@@ -8,14 +8,14 @@ span {
 }
 
 .main {
-    height: 500px;
+    height: 600px;
     width: 700px;
     border: 2px solid black;
     border-radius: 15px;
     text-align: center;
     margin: auto;
     margin-top: 40px;
-    background-color: darkslategrey;
+    background-color: darkcyan;
 }
 
 div {
@@ -33,7 +33,7 @@ select {
 
 .calendar {
     width: 75%;
-    height: 65%;
+    height: 70%;
     border: 2px dotted darkblue;
     border-radius: 15px;
     margin: auto;
@@ -65,4 +65,11 @@ tr {
 .today {
     background-color: antiquewhite;
 
+}
+
+#instruct {
+    color: antiquewhite;
+    font-size: 1.3em;
+    font-family: 微軟正黑體;
+    font-weight: 700;
 }
