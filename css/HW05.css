@@ -61,3 +61,8 @@ tbody {
 tr {
     margin: 10px
 }
+
+.today {
+    background-color: antiquewhite;
+
+}
